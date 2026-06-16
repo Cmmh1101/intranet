@@ -161,12 +161,12 @@ export default function EmployeesPage({
           <button onClick={fetchEmployees} className="btn-ghost" title="Actualizar">
             <RefreshCw size={15} className={loading ? 'animate-spin' : ''} />
           </button>
-          {isAdmin && (
+          {/* {isAdmin && (
             <button onClick={openCreate} className="btn-primary">
               <Plus size={16} />
               Nuevo empleado
             </button>
-          )}
+          )} */}
         </div>
       </div>
 

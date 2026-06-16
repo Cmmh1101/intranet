@@ -8,8 +8,8 @@ import {
   Calendar,
   Building2,
   UserCircle2,
-  Edit,
-  Trash2,
+  // Edit,
+  // Trash2,
 } from 'lucide-react'
 import clsx from 'clsx'
 
@@ -74,7 +74,7 @@ export default function EmployeeCard({
           {/* Admin Actions */}
           {isAdmin && (
             <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-              {onEdit && (
+              {/* {onEdit && (
                 <button
                   onClick={() => onEdit(employee)}
                   className="p-1.5 rounded-lg hover:bg-dawere-teal-50 text-dawere-teal transition-colors"
@@ -82,8 +82,8 @@ export default function EmployeeCard({
                 >
                   <Edit size={14} />
                 </button>
-              )}
-              {onDelete && (
+              )} */}
+              {/* {onDelete && (
                 <button
                   onClick={() => onDelete(employee)}
                   className="p-1.5 rounded-lg hover:bg-red-50 text-red-400 transition-colors"
@@ -91,7 +91,7 @@ export default function EmployeeCard({
                 >
                   <Trash2 size={14} />
                 </button>
-              )}
+              )} */}
             </div>
           )}
         </div>
