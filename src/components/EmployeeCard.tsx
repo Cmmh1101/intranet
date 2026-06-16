@@ -143,7 +143,7 @@ export default function EmployeeCard({
           {employee.manager && (
             <div className="flex items-center gap-2 text-xs text-dawere-dark-light">
               <UserCircle2 size={13} className="text-dawere-gray" />
-              <span>Gerente: {employee.manager}</span>
+              <span>Manager: {employee.manager}</span>
             </div>
           )}
           {employee.startDate && (

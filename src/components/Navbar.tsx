@@ -38,13 +38,15 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/dashboard" className="flex items-center gap-2 shrink-0">
               <div className="flex items-center">
-                <svg width="130" height="32" viewBox="0 0 200 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="0" y="5" width="34" height="34" rx="4" stroke="#1D6B69" strokeWidth="3" fill="none"/>
-                  <path d="M8 30 L20 12 L26 22" stroke="#1D6B69" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                  <path d="M22 12 L32 12" stroke="#1D6B69" strokeWidth="3" strokeLinecap="round"/>
-                  <path d="M32 12 L32 22" stroke="#1D6B69" strokeWidth="3" strokeLinecap="round"/>
-                  <text x="44" y="30" fontFamily="Inter, sans-serif" fontWeight="700" fontSize="22" letterSpacing="2" fill="#1D6B69">DAWERE</text>
-                </svg>
+                
+                <Link href="/dashboard" className="flex items-center">
+                  <Image
+                    src="/images/dawere-logo.svg"
+                    alt="Dawere"
+                    width={160}
+                    height={40}
+                />
+                </Link>
               </div>
               <span className="text-xs font-medium text-dawere-teal/60 border-l border-dawere-teal/20 pl-2 hidden sm:block">
                 Intranet
