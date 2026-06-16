@@ -45,6 +45,9 @@ export type LinkCategory =
   | 'Reference'
   | 'Email'
   | 'Social Media'
+  | 'Productivity'
+  | 'News'
+  | 'Education'
   | 'Other'
 
 export interface AirtableRecord<T> {
@@ -73,10 +76,15 @@ async function airtableFetch(
   })
 
   if (!res.ok) {
-    const errorText = await res.text()
-    console.error(`[Airtable] Error ${res.status}: ${errorText}`)
-    throw new Error(`Airtable API error: ${res.status} ${res.statusText}`)
-  }
+  const errorText = await res.text()
+  console.error('[Airtable Error]', {
+    status: res.status,
+    statusText: res.statusText,
+    url,
+    errorText,
+  })
+  throw new Error(`Airtable API error: ${res.status} ${errorText}`)
+}
 
   return res.json()
 }
@@ -87,21 +95,22 @@ async function airtableFetch(
 
 export async function getEmployees(): Promise<Employee[]> {
   const tableName = encodeURIComponent(EMPLOYEES_TABLE)
+
   const data = await airtableFetch(
-    `${tableName}?sort%5B0%5D%5Bfield%5D=Nombre&sort%5B0%5D%5Bdirection%5D=asc`
+    `${tableName}?sort%5B0%5D%5Bfield%5D=Name&sort%5B0%5D%5Bdirection%5D=asc`
   )
 
   return (data.records || []).map((record: AirtableRecord<any>) => ({
     id: record.id,
-    name: record.fields['Nombre'] || '',
-    role: record.fields['Cargo'] || '',
-    department: record.fields['Departamento'] || '',
+    name: record.fields['Name'] || '',
+    role: record.fields['Role'] || '',
+    department: record.fields['Department'] || '',
     email: record.fields['Email'] || '',
-    phone: record.fields['Telefono'] || '',
-    photo: record.fields['Foto']?.[0]?.url || '',
+    phone: record.fields['Phone'] || '',
+    photo: record.fields['Photo']?.[0]?.url || '',
     linkedin: record.fields['LinkedIn'] || '',
-    manager: record.fields['Gerente'] || '',
-    startDate: record.fields['Fecha de Inicio'] || '',
+    manager: record.fields['Manager'] || '',
+    startDate: record.fields['Start Date'] || '',
   }))
 }
 
@@ -200,18 +209,19 @@ export async function deleteEmployee(id: string): Promise<void> {
 
 export async function getLinks(): Promise<Link[]> {
   const tableName = encodeURIComponent(LINKS_TABLE)
+
   const data = await airtableFetch(
-    `${tableName}?sort%5B0%5D%5Bfield%5D=Nombre&sort%5B0%5D%5Bdirection%5D=asc`
+    `${tableName}?sort%5B0%5D%5Bfield%5D=Name&sort%5B0%5D%5Bdirection%5D=asc`
   )
 
   return (data.records || []).map((record: AirtableRecord<any>) => ({
     id: record.id,
-    name: record.fields['Nombre'] || '',
+    name: record.fields['Name'] || '',
     url: record.fields['URL'] || '',
-    description: record.fields['Descripcion'] || '',
-    category: record.fields['Categoria'] || 'Other',
-    ownerEmployee: record.fields['Responsable'] || '',
-    isActive: record.fields['Activo'] !== false,
+    description: record.fields['Description'] || '',
+    category: record.fields['Category'] || 'Other',
+    ownerEmployee: record.fields['Owner'] || '',
+    isActive: record.fields['Active'] !== false,
   }))
 }
 
