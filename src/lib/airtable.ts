@@ -210,18 +210,42 @@ export async function deleteEmployee(id: string): Promise<void> {
 export async function getLinks(): Promise<Link[]> {
   const tableName = encodeURIComponent(LINKS_TABLE)
 
-  const data = await airtableFetch(
-    `${tableName}?sort%5B0%5D%5Bfield%5D=Name&sort%5B0%5D%5Bdirection%5D=asc`
-  )
+  // No sort until we confirm the exact Airtable column name
+  const data = await airtableFetch(tableName)
 
   return (data.records || []).map((record: AirtableRecord<any>) => ({
     id: record.id,
-    name: record.fields['Name'] || '',
-    url: record.fields['URL'] || '',
-    description: record.fields['Description'] || '',
-    category: record.fields['Category'] || 'Other',
-    ownerEmployee: record.fields['Owner'] || '',
-    isActive: record.fields['Active'] !== false,
+    name:
+      record.fields['Link Name'] ||
+      record.fields['Nombre'] ||
+      record.fields['Titulo'] ||
+      record.fields['Título'] ||
+      record.fields['Name'] ||
+      '',
+    url:
+      record.fields['URL'] ||
+      record.fields['Url'] ||
+      record.fields['Link'] ||
+      '',
+    description:
+      record.fields['Description'] ||
+      record.fields['Descripcion'] ||
+      record.fields['Descripción'] ||
+      '',
+    category:
+      record.fields['Category'] ||
+      record.fields['Categoria'] ||
+      record.fields['Categoría'] ||
+      'Other',
+    ownerEmployee:
+      record.fields['Responsable']?.[0] ||
+      record.fields['Owner']?.[0] ||
+      record.fields['Empleado']?.[0] ||
+      '',
+    isActive:
+      record.fields['Active'] ??
+      record.fields['Activo'] ??
+      true,
   }))
 }
 
