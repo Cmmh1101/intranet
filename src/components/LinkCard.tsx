@@ -6,7 +6,7 @@ import {
   getDomainFromUrl,
   getFaviconUrl,
 } from '@/lib/utils'
-import { ExternalLink, Edit, Trash2 } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import clsx from 'clsx'
 import Image from 'next/image'
 
@@ -69,7 +69,7 @@ export default function LinkCard({ link, onEdit, onDelete, isAdmin }: LinkCardPr
           </div>
 
           {/* Admin Actions */}
-          {isAdmin && (
+          {/* {isAdmin && (
             <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
               {onEdit && (
                 <button
@@ -90,7 +90,7 @@ export default function LinkCard({ link, onEdit, onDelete, isAdmin }: LinkCardPr
                 </button>
               )}
             </div>
-          )}
+          )} */}
         </div>
 
         {/* Description */}
