@@ -5,8 +5,8 @@
 
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID!
 const AIRTABLE_PAT = process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN!
-const EMPLOYEES_TABLE = process.env.AIRTABLE_EMPLOYEES_TABLE || 'Empleados'
-const LINKS_TABLE = process.env.AIRTABLE_LINKS_TABLE || 'Enlaces'
+const EMPLOYEES_TABLE = process.env.AIRTABLE_EMPLOYEES_TABLE || 'Employees'
+const LINKS_TABLE = process.env.AIRTABLE_LINKS_TABLE || 'Quick_Links'
 
 // ========================
 //   TYPES
