@@ -136,12 +136,12 @@ export default function LinksPage({ isAdmin }: LinksPageProps) {
           >
             <RefreshCw size={15} className={loading ? 'animate-spin' : ''} />
           </button>
-          {isAdmin && (
+          {/* {isAdmin && (
             <button onClick={openCreate} className="btn-primary">
               <Plus size={16} />
               Nuevo enlace
             </button>
-          )}
+          )} */}
         </div>
       </div>
 
