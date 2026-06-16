@@ -14,46 +14,58 @@ export const LINK_CATEGORIES: LinkCategory[] = [
   'Reference',
   'Email',
   'Social Media',
+  'Productivity',
+  'News',
+  'Education',
   'Other',
 ]
 
 export const CATEGORY_LABELS: Record<LinkCategory, string> = {
   'HR Tools': 'Recursos Humanos',
   'Dev Tools': 'Herramientas Dev',
-  'Marketing': 'Marketing',
+  Marketing: 'Marketing',
   'External Partners': 'Socios Externos',
   'Sales Tools': 'Herramientas de Ventas',
   'Search Engine': 'Buscadores',
-  'Reference': 'Referencia',
-  'Email': 'Correo',
+  Reference: 'Referencia',
+  Email: 'Correo',
   'Social Media': 'Redes Sociales',
-  'Other': 'Otros',
+  Productivity: 'Productividad',
+  News: 'Noticias',
+  Education: 'Educación',
+  Other: 'Otros',
 }
 
 export const CATEGORY_COLORS: Record<LinkCategory, string> = {
   'HR Tools': 'cat-hr',
   'Dev Tools': 'cat-dev',
-  'Marketing': 'cat-marketing',
+  Marketing: 'cat-marketing',
   'External Partners': 'cat-external',
   'Sales Tools': 'cat-sales',
   'Search Engine': 'cat-search',
-  'Reference': 'cat-reference',
-  'Email': 'cat-email',
+  Reference: 'cat-reference',
+  Email: 'cat-email',
   'Social Media': 'cat-social',
-  'Other': 'cat-default',
+  Productivity: 'cat-productivity',
+  News: 'cat-news',
+  Education: 'cat-education',
+  Other: 'cat-default',
 }
 
 export const CATEGORY_ICONS: Record<LinkCategory, string> = {
   'HR Tools': '👥',
   'Dev Tools': '⚙️',
-  'Marketing': '📢',
+  Marketing: '📢',
   'External Partners': '🤝',
   'Sales Tools': '💰',
   'Search Engine': '🔍',
-  'Reference': '📚',
-  'Email': '✉️',
+  Reference: '📚',
+  Email: '✉️',
   'Social Media': '📱',
-  'Other': '🔗',
+  Productivity: '✅',
+  News: '📰',
+  Education: '🎓',
+  Other: '🔗',
 }
 
 // ========================
@@ -61,18 +73,27 @@ export const CATEGORY_ICONS: Record<LinkCategory, string> = {
 // ========================
 
 export const DEPARTMENTS = [
-  'Tecnología',
-  'Recursos Humanos',
+  'Engineering',
+  'Product',
+  'Design',
+  'Human Resources',
+  'Finance',
   'Marketing',
-  'Ventas',
-  'Operaciones',
-  'Finanzas',
-  'Legal',
-  'Producto',
-  'Diseño',
-  'Atención al Cliente',
-  'Dirección',
+  'Sales',
+  'Administration',
 ]
+
+// Optional Spanish labels for UI display
+export const DEPARTMENT_LABELS: Record<string, string> = {
+  Engineering: 'Ingeniería',
+  Product: 'Producto',
+  Design: 'Diseño',
+  'Human Resources': 'Recursos Humanos',
+  Finance: 'Finanzas',
+  Marketing: 'Marketing',
+  Sales: 'Ventas',
+  Administration: 'Administración',
+}
 
 // ========================
 //   DATE HELPERS
@@ -99,14 +120,20 @@ export function calculateTenure(startDate?: string): string {
     const now = new Date()
     const months = Math.floor(
       (now.getFullYear() - start.getFullYear()) * 12 +
-      (now.getMonth() - start.getMonth())
+        (now.getMonth() - start.getMonth())
     )
+
     if (months < 1) return 'Recién incorporado'
     if (months < 12) return `${months} mes${months === 1 ? '' : 'es'}`
+
     const years = Math.floor(months / 12)
     const remainMonths = months % 12
+
     if (remainMonths === 0) return `${years} año${years === 1 ? '' : 's'}`
-    return `${years} año${years === 1 ? '' : 's'} y ${remainMonths} mes${remainMonths === 1 ? '' : 'es'}`
+
+    return `${years} año${years === 1 ? '' : 's'} y ${remainMonths} mes${
+      remainMonths === 1 ? '' : 'es'
+    }`
   } catch {
     return ''
   }
