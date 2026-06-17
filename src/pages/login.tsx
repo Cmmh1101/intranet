@@ -44,17 +44,17 @@ export default function LoginPage({ error }: LoginProps) {
       </Head>
       <div className="min-h-screen bg-gradient-to-br from-dawere-teal via-dawere-teal-dark to-[#0D3B3A] flex items-center justify-center p-4">
         {/* Background decorations */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/5" />
           <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-white/5" />
           <div className="absolute top-1/3 left-1/4 w-32 h-32 rounded-full bg-dawere-orange/10" />
-        </div>
+        </div> */}
 
         <div className="relative w-full max-w-md">
           {/* Card */}
           <div className="bg-white rounded-2xl shadow-modal overflow-hidden">
             {/* Header */}
-            <div className="bg-gradient-to-r from-dawere-teal to-dawere-teal-light p-8 text-center">
+            <div className="bg-dawere-gray-light p-8 text-center">
               {/* Logo SVG */}
               <div className="flex justify-center mb-4">
                  <Image
@@ -64,8 +64,8 @@ export default function LoginPage({ error }: LoginProps) {
                                     height={40}
                                 />
               </div>
-              <h1 className="text-white font-bold text-xl">Portal Intranet</h1>
-              <p className="text-white/70 text-sm mt-1">Acceso exclusivo para empleados</p>
+              <h1 className="text-darke font-bold text-xl">Portal Intranet</h1>
+              <p className="text-dark/70 text-sm mt-1">Acceso exclusivo para empleados</p>
             </div>
 
             {/* Body */}
