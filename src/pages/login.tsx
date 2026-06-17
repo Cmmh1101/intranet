@@ -6,6 +6,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { AlertCircle } from 'lucide-react'
+import Image from 'next/image'
 
 interface LoginProps {
   error?: string
@@ -56,13 +57,12 @@ export default function LoginPage({ error }: LoginProps) {
             <div className="bg-gradient-to-r from-dawere-teal to-dawere-teal-light p-8 text-center">
               {/* Logo SVG */}
               <div className="flex justify-center mb-4">
-                <svg width="160" height="40" viewBox="0 0 200 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="0" y="5" width="34" height="34" rx="4" stroke="white" strokeWidth="3" fill="none"/>
-                  <path d="M8 30 L20 12 L26 22" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                  <path d="M22 12 L32 12" stroke="white" strokeWidth="3" strokeLinecap="round"/>
-                  <path d="M32 12 L32 22" stroke="white" strokeWidth="3" strokeLinecap="round"/>
-                  <text x="44" y="30" fontFamily="Inter, sans-serif" fontWeight="700" fontSize="22" letterSpacing="2" fill="white">DAWERE</text>
-                </svg>
+                 <Image
+                                    src="/images/dawere-logo.svg"
+                                    alt="Dawere"
+                                    width={160}
+                                    height={40}
+                                />
               </div>
               <h1 className="text-white font-bold text-xl">Portal Intranet</h1>
               <p className="text-white/70 text-sm mt-1">Acceso exclusivo para empleados</p>
